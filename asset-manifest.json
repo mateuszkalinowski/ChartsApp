@@ -1,13 +1,13 @@
 {
-  "main.css": "/ChartsApp/static/css/main.61a28a37.chunk.css",
-  "main.js": "/ChartsApp/static/js/main.069f10fc.chunk.js",
-  "main.js.map": "/ChartsApp/static/js/main.069f10fc.chunk.js.map",
-  "static/js/1.6d8da620.chunk.js": "/ChartsApp/static/js/1.6d8da620.chunk.js",
-  "static/js/1.6d8da620.chunk.js.map": "/ChartsApp/static/js/1.6d8da620.chunk.js.map",
-  "runtime~main.js": "/ChartsApp/static/js/runtime~main.31929eda.js",
-  "runtime~main.js.map": "/ChartsApp/static/js/runtime~main.31929eda.js.map",
-  "static/css/main.61a28a37.chunk.css.map": "/ChartsApp/static/css/main.61a28a37.chunk.css.map",
-  "index.html": "/ChartsApp/index.html",
-  "precache-manifest.6bbb3bb5f5525a87b3f614141d534b38.js": "/ChartsApp/precache-manifest.6bbb3bb5f5525a87b3f614141d534b38.js",
-  "service-worker.js": "/ChartsApp/service-worker.js"
+  "main.css": "/static/css/main.61a28a37.chunk.css",
+  "main.js": "/static/js/main.6833f7bc.chunk.js",
+  "main.js.map": "/static/js/main.6833f7bc.chunk.js.map",
+  "static/js/1.db312725.chunk.js": "/static/js/1.db312725.chunk.js",
+  "static/js/1.db312725.chunk.js.map": "/static/js/1.db312725.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/css/main.61a28a37.chunk.css.map": "/static/css/main.61a28a37.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.477798dc579394db6e8708a657403d62.js": "/precache-manifest.477798dc579394db6e8708a657403d62.js",
+  "service-worker.js": "/service-worker.js"
 }
