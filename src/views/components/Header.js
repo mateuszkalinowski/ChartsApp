@@ -4,7 +4,7 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container">
             <a className="navbar-brand" href="/">
               ChartsApp
@@ -31,15 +31,15 @@ export default class Header extends Component {
                     <a class="dropdown-item" href="#"></a>
                     <a class="dropdown-item" href="#"></a>
                     </div>
-                </li>
-                <li class="nav-item active">
+                </li> */}
+                {/* <li class="nav-item active">
                   <a class="nav-link" href="#">
-                    Edycja
+                    Wykresy danych liczbowych
                   </a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="#">
-                    Widok
+                    Wykresy danych tekstowych
                   </a>
                 </li> */}
               </ul>

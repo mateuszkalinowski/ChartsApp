@@ -1,22 +1,22 @@
-import {ADD_XY_POINT, REMOVE_XY_POINT, EDIT_XY_POINT} from '../../types';
+import {ADD_NAMEANDVALUE_POINT, REMOVE_NAMEANDVALUE_POINT, EDIT_NAMEANDVALUE_POINT} from "../../types";
 
 export const addPoint = (point) => dispatch => {
     dispatch({
-        type: ADD_XY_POINT,
+        type: ADD_NAMEANDVALUE_POINT,
         payload: point
     })
 }
 
 export const removePoint = (id) => dispatch => {
     dispatch({
-        type: REMOVE_XY_POINT,
+        type: REMOVE_NAMEANDVALUE_POINT,
         payload: id
     })
 }
 
 export const editPoint = (id,newX,newY) => dispatch => {
     dispatch({
-        type: EDIT_XY_POINT,
+        type: EDIT_NAMEANDVALUE_POINT,
         payload: {
             id,
             newX,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './views/components/Header';
 
 import MainPage from "./views/pages/MainPage"
@@ -15,7 +15,7 @@ export default class Routes extends Component {
             <div className="app">
               <Header/>
               <Switch>
-                <Route path="/" component={MainPage}/>
+                <Route component={MainPage}/>
               </Switch>
             </div>
             </Router>  

@@ -1,13 +1,15 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 
-import pointsReducer from "./actions/points/pointsReducers";
+import XandYPointsReducer from "./actions/points/pointsReducers";
+import NameAndValueReducer from "./actions/nameAndValuePoints/nameAndValuePointsReducer";
 
 const appReducer = combineReducers({
-  points: pointsReducer
+    XandYPoints: XandYPointsReducer,
+    NameAndValueReducer: NameAndValueReducer
 });
 
 const rootReducer = (state, action) => {
-  return appReducer(state, action);
+    return appReducer(state, action);
 };
 
 export default rootReducer;
