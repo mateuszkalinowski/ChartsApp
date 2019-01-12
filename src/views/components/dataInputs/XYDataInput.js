@@ -1,0 +1,279 @@
+import React, { Component } from "react";
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { CSVLink, CSVDownload } from "react-csv";
+
+import {
+  addPoint,
+  removePoint,
+  editPoint
+} from "../../../state/actions/points/pointsActions";
+
+import uuid from "uuid";
+
+import $ from "jquery";
+
+import "./XYDataInput.css";
+
+class XYDataInput extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      points: [],
+      newX: "",
+      newY: "",
+      errorMessage: "",
+      editMode: [],
+      type: "Punktowy"
+    };
+  }
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  addPoint = () => {
+    const newPoint = {
+      id: uuid(),
+      x: this.state.newX,
+      y: this.state.newY
+    };
+
+    if (newPoint.x !== "" && newPoint.y !== "") {
+      if (isNaN(newPoint.x)) {
+        this.setState({
+          errorMessage: "Wartość X nie jest liczbą"
+        });
+        return;
+      }
+
+      if (isNaN(newPoint.y)) {
+        this.setState({
+          errorMessage: "Wartość Y nie jest liczbą"
+        });
+        return;
+      }
+
+      let xValues = Object.values(this.props.points.points).filter(point => {
+          return point.x === newPoint.x;
+      })
+
+      if(Object.values(xValues).length>0) {
+        this.setState({
+          errorMessage: "Taka wartość X już istnieje"
+        });
+        return;
+      }
+
+
+
+
+      this.props.addPoint(newPoint);
+      this.setState({
+        errorMessage: "",
+        newX: "",
+        newY: ""
+      });
+
+      $("#listDiv").scrollTop($("#listDiv")[0].scrollHeight);
+    } else {
+      this.setState({
+        errorMessage: "Obie wartości muszą być wypełnione"
+      });
+    }
+  };
+
+  removePoint(id) {
+    this.props.removePoint(id);
+  }
+
+  editModeTurnOn(id) {
+    let editMode = this.state.editMode;
+    editMode.push(id);
+    this.setState({
+      editMode: editMode
+    });
+  }
+
+  editModeTurnOff(id) {
+    let newX = $("#x_" + id).val();
+    let newY = $("#y_" + id).val();
+
+    let edit = true;
+
+    if (newX === "" || newY === "") {
+      this.setState({
+        errorMessage:
+          "Nie można było zmienić wartości, ponieważ nowa wartość jest pusta"
+      });
+      edit = false;
+    }
+    if (isNaN(newX) || isNaN(newY)) {
+      this.setState({
+        errorMessage:
+          "Nie można było zmienić wartości. Obie nowe wartości musza być liczbami"
+      });
+      edit = false;
+    }
+
+    if (edit) this.props.editPoint(id, newX, newY);
+
+    let editMode = this.state.editMode;
+
+    editMode = editMode.filter(data => {
+      return data !== id;
+    });
+    this.setState({
+      editMode: editMode
+    });
+  }
+
+  render() {
+
+      let csvData = [];
+
+      this.props.points.points.forEach(point => {
+          csvData.push({
+              x: point.x,
+              y: point.y
+          });
+      });
+
+    return (
+      <div>
+        <h4>
+          <strong>Dane:</strong>
+        </h4>
+        <div className="list" id="listDiv">
+          <table className="table">
+            <thead>
+              <tr>
+                <th className="valueWidth">X</th>
+                <th className="valueWidth">Y</th>
+                <th>Akcje</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.values(this.props.points.points).map(point => (
+                <tr key={uuid()}>
+                  {!this.state.editMode.includes(point.id) && (
+                    <React.Fragment>
+                      <td className="valueWidth">{point.x}</td>
+                      <td className="valueWidth">{point.y}</td>
+                    </React.Fragment>
+                  )}
+                  {this.state.editMode.includes(point.id) && (
+                    <React.Fragment>
+                      <td className="valueWidth">
+                        <input
+                          className="newValueInput text-center"
+                          defaultValue={point.x}
+                          id={"x_" + point.id}
+                        />
+                      </td>
+                      <td className="valueWidth">
+                        <input
+                          className="newValueInput text-center"
+                          defaultValue={point.y}
+                          id={"y_" + point.id}
+                        />
+                      </td>
+                    </React.Fragment>
+                  )}
+                  <td className="buttonsWidth">
+                    {this.state.editMode.includes(point.id) ? (
+                      <button
+                        className="btn btn-success btn-small tableButton mx-3"
+                        onClick={() => {
+                          this.editModeTurnOff(point.id);
+                        }}
+                      >
+                        Zapisz
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-success btn-small tableButton mx-3"
+                        onClick={() => {
+                          this.editModeTurnOn(point.id);
+                        }}
+                      >
+                        Edytuj
+                      </button>
+                    )}
+                    <button
+                      className="btn btn-danger btn-small tableButton mx-3"
+                      onClick={() => {
+                        this.removePoint(point.id);
+                      }}
+                    >
+                      Usuń
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <table className="table">
+          <thead>
+            <tr>
+              <th />
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  className="form-input text-center newValueInput"
+                  name="newX"
+                  id="newX"
+                  value={this.state.newX}
+                  onChange={this.onChange}
+                />
+              </td>
+              <td>
+                <input
+                  className="form-input text-center newValueInput"
+                  name="newY"
+                  id="newY"
+                  value={this.state.newY}
+                  onChange={this.onChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="3">
+                <button
+                  className="btn btn-primary btn-block btn-sm"
+                  onClick={this.addPoint}
+                >
+                  Dodaj
+                </button>
+              </td>
+            </tr>
+          <tr>
+            <td colSpan="3">
+                <CSVLink data={csvData} className="btn btn-primary" filename={"data.csv"}>Pobierz dane jako plik CSV</CSVLink>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <h6 className="text-danger"> {this.state.errorMessage} </h6>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+    points: state.XandYPoints.points
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    addPoint,
+    removePoint,
+    editPoint
+  }
+)(XYDataInput);

@@ -1,0 +1,22 @@
+.list {
+  overflow-y: auto;
+  max-height: 600px;
+  width: 400px;
+}
+
+.newValueInput {
+    width: 60px;
+
+}
+
+.tableButton {
+    padding: 3px;
+}
+
+.valueWidth {
+    width: 90px;
+}
+
+.buttonsWidth {
+    width: 180px;
+}
