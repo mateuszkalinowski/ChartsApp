@@ -56,7 +56,7 @@ class Header extends Component {
                                         Plik
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><CSVLink data={csvData} filename={"data.csv"} className="text-dark">Pobierz dane jako plik CSV</CSVLink></a>
+                                        <CSVLink data={csvData} filename={"data.csv"} className="dropdown-item text-dark">Pobierz dane jako plik CSV</CSVLink>
                                         {/*<a class="dropdown-item" href="#"></a>*/}
                                         {/*<a class="dropdown-item" href="#"></a>*/}
                                     </div>

@@ -18,6 +18,7 @@ import PointsChart from "../components/charts/PointsChart";
 import LinesChart from "../components/charts/LinesChart";
 import HorizontalBarChart from "../components/charts/HorizontalBarChart";
 import VerticalBarChart from "../components/charts/VerticalBarChart";
+import CircleChart from "../components/charts/CircleChart";
 
 
 class MainPage extends Component {
@@ -118,6 +119,11 @@ class MainPage extends Component {
                                     <VerticalBarChart points={this.props.nvpoints}/>
                                 )
                             }
+                            {
+                                this.state.TextChartType === "Kolowy" && (
+                                    <CircleChart points={this.props.nvpoints}/>
+                                )
+                            }
                             <button
                                 className="btn btn-dark mx-4"
                                 onClick={() => {
@@ -137,6 +143,16 @@ class MainPage extends Component {
                                 }}
                             >
                                 Kolumnowy Wertykalny
+                            </button>
+                            <button
+                                className="btn btn-dark mx-4"
+                                onClick={() => {
+                                    this.setState({
+                                        TextChartType: "Kolowy"
+                                    });
+                                }}
+                            >
+                                Kołowy
                             </button>
                         </React.Fragment>
                         }
