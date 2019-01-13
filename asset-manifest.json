@@ -1,13 +1,13 @@
 {
   "main.css": "/ChartsApp/static/css/main.f039796f.chunk.css",
-  "main.js": "/ChartsApp/static/js/main.20fd1299.chunk.js",
-  "main.js.map": "/ChartsApp/static/js/main.20fd1299.chunk.js.map",
-  "static/js/1.966801c6.chunk.js": "/ChartsApp/static/js/1.966801c6.chunk.js",
-  "static/js/1.966801c6.chunk.js.map": "/ChartsApp/static/js/1.966801c6.chunk.js.map",
+  "main.js": "/ChartsApp/static/js/main.dfc5852c.chunk.js",
+  "main.js.map": "/ChartsApp/static/js/main.dfc5852c.chunk.js.map",
+  "static/js/1.a73b8bf9.chunk.js": "/ChartsApp/static/js/1.a73b8bf9.chunk.js",
+  "static/js/1.a73b8bf9.chunk.js.map": "/ChartsApp/static/js/1.a73b8bf9.chunk.js.map",
   "runtime~main.js": "/ChartsApp/static/js/runtime~main.31929eda.js",
   "runtime~main.js.map": "/ChartsApp/static/js/runtime~main.31929eda.js.map",
   "static/css/main.f039796f.chunk.css.map": "/ChartsApp/static/css/main.f039796f.chunk.css.map",
   "index.html": "/ChartsApp/index.html",
-  "precache-manifest.c2b9b2bedb50b00dfd40a2cf87c3c099.js": "/ChartsApp/precache-manifest.c2b9b2bedb50b00dfd40a2cf87c3c099.js",
+  "precache-manifest.cdca1104cdf9ed6e191c68b6d24b3f17.js": "/ChartsApp/precache-manifest.cdca1104cdf9ed6e191c68b6d24b3f17.js",
   "service-worker.js": "/ChartsApp/service-worker.js"
 }
