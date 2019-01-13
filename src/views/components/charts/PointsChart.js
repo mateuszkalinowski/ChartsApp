@@ -27,7 +27,7 @@ export default function PointsChart(props) {
 
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
         <Legend />
-        <Scatter name="Dane" data={props.points.points} fill="#8884d8" />
+        <Scatter name="Dane" data={props.points.points} fill={props.color} />
       </ScatterChart>
     </React.Fragment>
   );

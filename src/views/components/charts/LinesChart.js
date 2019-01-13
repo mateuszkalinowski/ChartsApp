@@ -35,7 +35,7 @@ export default function LinesChart(props) {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="y" stroke="#8884d8" />
+        <Line type="monotone" dataKey="y" stroke={props.color} />
       </LineChart>
     </React.Fragment>
   );

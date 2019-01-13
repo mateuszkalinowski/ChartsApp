@@ -40,7 +40,7 @@ export default function HorizontalBarChart(props) {
                 <Tooltip/>
                 <Legend/>
                 <ReferenceLine y={0} stroke='#000'/>
-                <Bar dataKey="value" name="Dane" fill="#8884d8"/>
+                <Bar dataKey="value" name="Dane" fill={props.color}/>
             </BarChart>
         </React.Fragment>
     );
