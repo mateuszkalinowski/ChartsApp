@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { CSVLink, CSVDownload } from "react-csv";
+import CSVReader from 'react-csv-reader'
+
 
 import {
   addPoint,
@@ -129,16 +131,6 @@ class XYDataInput extends Component {
   }
 
   render() {
-
-      let csvData = [];
-
-      this.props.points.points.forEach(point => {
-          csvData.push({
-              x: point.x,
-              y: point.y
-          });
-      });
-
     return (
       <div>
         <h4>
@@ -252,11 +244,6 @@ class XYDataInput extends Component {
                 </button>
               </td>
             </tr>
-          <tr>
-            <td colSpan="3">
-                <CSVLink data={csvData} className="btn btn-primary" filename={"data.csv"}>Pobierz dane jako plik CSV</CSVLink>
-            </td>
-          </tr>
           </tbody>
         </table>
         <h6 className="text-danger"> {this.state.errorMessage} </h6>

@@ -113,15 +113,6 @@ class NameAndValueDataInput extends Component {
   }
 
   render() {
-      let csvData = [];
-
-      this.props.points.points.forEach(point => {
-          csvData.push({
-              x: point.x,
-              y: point.y
-          });
-      });
-
     return (
       <div>
         <h4>
@@ -208,7 +199,7 @@ class NameAndValueDataInput extends Component {
             <tr>
               <td>
                 <input
-                  className="form-input text-center newValueInput"
+                  className="form-input text-center newNameInput"
                   name="newName"
                   id="newName"
                   value={this.state.newName}
@@ -235,11 +226,6 @@ class NameAndValueDataInput extends Component {
                 </button>
               </td>
             </tr>
-            <tr>
-                <td colSpan="3">
-                    <CSVLink data={csvData} className="btn btn-primary" filename={"data.csv"}>Pobierz dane jako plik CSV</CSVLink>
-                </td>
-            </tr>
           </tbody>
         </table>
         <h6 className="text-danger"> {this.state.errorMessage} </h6>
@@ -249,7 +235,7 @@ class NameAndValueDataInput extends Component {
 }
 
 const mapStateToProps = state => ({
-  points: state.NameAndValueReducer.points
+  points: state.NameAndValuePoints.points
 });
 
 export default connect(

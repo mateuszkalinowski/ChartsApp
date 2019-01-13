@@ -1,12 +1,15 @@
 .list {
   overflow-y: auto;
-  max-height: 600px;
+  height: 400px;
   width: 400px;
+}
+
+.newNameInput {
+    width: 120px;
 }
 
 .newValueInput {
     width: 60px;
-
 }
 
 .tableButton {

@@ -9,6 +9,8 @@ import {
     editPoint
 } from "../../state/actions/points/pointsActions";
 
+import {setSelectedChartsFamily} from "../../state/actions/selections/selectionsActions"
+
 import XYDataInput from "../components/dataInputs/XYDataInput";
 import NameAndValueDataInput from "../components/dataInputs/NameAndValueDataInput";
 
@@ -25,8 +27,7 @@ class MainPage extends Component {
         this.state = {
             XandYPoints: [],
             NumbersChartType: "Punktowy",
-            TextChartType: "KolumnowyHoryzontalny",
-            family: "Liczbowe"
+            TextChartType: "KolumnowyHoryzontalny"
         };
     }
 
@@ -42,30 +43,26 @@ class MainPage extends Component {
                         <button
                             className="btn btn-dark mx-4"
                             onClick={() => {
-                                this.setState({
-                                    family: "Liczbowe"
-                                });
+                                this.props.setSelectedChartsFamily("Liczbowe");
                             }}
                         >Liczbowe
                         </button>
                         <button
                             className="btn btn-dark mx-4"
                             onClick={() => {
-                                this.setState({
-                                    family: "Tekstowe"
-                                });
+                                this.props.setSelectedChartsFamily("Tekstowe");
                             }}
                         >Tekstowe
                         </button>
                     </div>
                 </div>
                 <div className="row">
-                    {this.state.family === "Liczbowe" &&
+                    {this.props.selections.family  === "Liczbowe" &&
                     <div className="col-sm-4">
                         <XYDataInput/>
                     </div>
                     }
-                    {this.state.family === "Tekstowe" &&
+                    {this.props.selections.family  === "Tekstowe" &&
                     <div className="col-sm-4">
                         <NameAndValueDataInput/>
                     </div>
@@ -75,7 +72,7 @@ class MainPage extends Component {
                         <h4>
                             <strong>Wykres:</strong>
                         </h4>
-                        {this.state.family === "Liczbowe" &&
+                        {this.props.selections.family  === "Liczbowe" &&
                         <React.Fragment>
                             {
                                 this.state.NumbersChartType === "Punktowy" && (
@@ -109,7 +106,7 @@ class MainPage extends Component {
                         </React.Fragment>
                         }
 
-                        {this.state.family === "Tekstowe" &&
+                        {this.props.selections.family === "Tekstowe" &&
                         <React.Fragment>
                             {
                                 this.state.TextChartType === "KolumnowyHoryzontalny" && (
@@ -153,7 +150,8 @@ class MainPage extends Component {
 
 const mapStateToProps = state => ({
     xypoints: state.XandYPoints.points,
-    nvpoints: state.NameAndValueReducer.points
+    nvpoints: state.NameAndValuePoints.points,
+    selections: state.Selections.selections
 
 });
 
@@ -162,6 +160,7 @@ export default connect(
     {
         addPoint,
         removePoint,
-        editPoint
+        editPoint,
+        setSelectedChartsFamily
     }
 )(MainPage);

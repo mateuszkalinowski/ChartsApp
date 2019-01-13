@@ -1,4 +1,4 @@
-import {ADD_NAMEANDVALUE_POINT, REMOVE_NAMEANDVALUE_POINT, EDIT_NAMEANDVALUE_POINT} from "../../types";
+import {ADD_NAMEANDVALUE_POINT, REMOVE_NAMEANDVALUE_POINT, EDIT_NAMEANDVALUE_POINT, REMOVE_ALL_NAMEANDVALUE_POINT} from "../../types";
 
 const initialState = {
     points: {
@@ -19,32 +19,39 @@ export default function (state = initialState, action) {
                 points: {
                     'points': points
                 }
-            }
+            };
         case REMOVE_NAMEANDVALUE_POINT:
             points = state.points.points;
             points = points.filter(point => {
                 return point.id !== action.payload
-            })
+            });
             return {
                 ...state,
                 points: {
                     'points': points
                 }
-            }
+            };
         case EDIT_NAMEANDVALUE_POINT:
             points = state.points.points;
             points.forEach((point, id) => {
-                if(point.id === action.payload.id) {
+                if (point.id === action.payload.id) {
                     point.name = action.payload.newX;
                     point.value = action.payload.newY;
                 }
-            })
+            });
             return {
                 ...state,
                 points: {
                     'points': points
                 }
-            }
+            };
+        case REMOVE_ALL_NAMEANDVALUE_POINT:
+            return {
+                ...state,
+                points: {
+                    points: []
+                }
+            };
         default:
             return state;
     }
