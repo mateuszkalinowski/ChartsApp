@@ -1,13 +1,13 @@
 {
   "main.css": "/ChartsApp/static/css/main.ff7e7d61.chunk.css",
-  "main.js": "/ChartsApp/static/js/main.663e2bfa.chunk.js",
-  "main.js.map": "/ChartsApp/static/js/main.663e2bfa.chunk.js.map",
+  "main.js": "/ChartsApp/static/js/main.5bc78b93.chunk.js",
+  "main.js.map": "/ChartsApp/static/js/main.5bc78b93.chunk.js.map",
   "static/js/1.4ffc8061.chunk.js": "/ChartsApp/static/js/1.4ffc8061.chunk.js",
   "static/js/1.4ffc8061.chunk.js.map": "/ChartsApp/static/js/1.4ffc8061.chunk.js.map",
   "runtime~main.js": "/ChartsApp/static/js/runtime~main.31929eda.js",
   "runtime~main.js.map": "/ChartsApp/static/js/runtime~main.31929eda.js.map",
   "static/css/main.ff7e7d61.chunk.css.map": "/ChartsApp/static/css/main.ff7e7d61.chunk.css.map",
   "index.html": "/ChartsApp/index.html",
-  "precache-manifest.9dfddde6500171880a038221cf45082c.js": "/ChartsApp/precache-manifest.9dfddde6500171880a038221cf45082c.js",
+  "precache-manifest.9ceb6c3ab6ef1854b5ed7e9b9596ce45.js": "/ChartsApp/precache-manifest.9ceb6c3ab6ef1854b5ed7e9b9596ce45.js",
   "service-worker.js": "/ChartsApp/service-worker.js"
 }
