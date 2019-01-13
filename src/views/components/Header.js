@@ -1,34 +1,92 @@
 import React, {Component} from "react";
 import {CSVLink} from "react-csv";
 import {connect} from "react-redux";
+import CSVReader from 'react-csv-reader'
 
 import {
+    addPoint as addXYPoint,
     removeAllXYPoints
 } from "../../state/actions/points/pointsActions";
 
 import {
+    addPoint as addNameValuePoint,
     removeAllNameAndValuePoints
 } from "../../state/actions/nameAndValuePoints/nameAndValuePointsActions";
 
+import {
+    setXLabel,
+    setYLabel,
+    setNameLabel,
+    setValueLabel
+} from "../../state/actions/selections/selectionsActions";
+import uuid from "uuid";
+
 class Header extends Component {
+
+
+    csvXYFileAdded = (data) => {
+
+        this.props.removeAllXYPoints();
+
+        data.forEach(function (item, index) {
+            if (index !== 0) {
+
+                const newPoint = {
+                    id: uuid(),
+                    x: item[0],
+                    y: item[1]
+                };
+
+                if (!isNaN(newPoint.x) && !isNaN(newPoint.y)) {
+                    this.props.addXYPoint(newPoint);
+                }
+            } else {
+                this.props.setXLabel(item[0]);
+                this.props.setYLabel(item[1]);
+            }
+        }.bind(this));
+    };
+
+    csvNameValueFileAdded = (data) => {
+
+        this.props.removeAllNameAndValuePoints();
+
+        data.forEach(function (item, index) {
+            if (index !== 0) {
+
+                const newPoint = {
+                    id: uuid(),
+                    name: item[0],
+                    value: item[1]
+                };
+
+                if (!isNaN(newPoint.value)) {
+                    this.props.addNameValuePoint(newPoint);
+                }
+            } else {
+                this.props.setNameLabel(item[0]);
+                this.props.setValueLabel(item[1]);
+            }
+        }.bind(this));
+
+    }
+
     render() {
-        let csvData = [];
-        if(this.props.selections.family === "Liczbowe") {
-            this.props.xypoints.points.forEach(point => {
-                csvData.push({
-                    x: point.x,
-                    y: point.y
-                });
+        let csvXYData = [];
+        this.props.xypoints.points.forEach(point => {
+            csvXYData.push({
+                [this.props.selections.xLabel]: point.x,
+                [this.props.selections.yLabel]: point.y
             });
-        }
-        if(this.props.selections.family === "Tekstowe") {
-            this.props.nvpoints.points.forEach(point => {
-                csvData.push({
-                    name: point.name,
-                    value: point.value
-                });
+        });
+        let csvNameValueData = [];
+        this.props.nvpoints.points.forEach(point => {
+            csvNameValueData.push({
+                [this.props.selections.nameLabel]: point.name,
+                [this.props.selections.valueLabel]: point.value
             });
-        }
+        });
+
 
         return (
             <div>
@@ -56,9 +114,29 @@ class Header extends Component {
                                         Plik
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <CSVLink data={csvData} filename={"data.csv"} className="dropdown-item text-dark">Pobierz dane jako plik CSV</CSVLink>
-                                        {/*<a class="dropdown-item" href="#"></a>*/}
-                                        {/*<a class="dropdown-item" href="#"></a>*/}
+                                        <CSVLink data={csvXYData} filename={"numericData.csv"}
+                                                 className="dropdown-item text-dark">Pobierz dane liczbowe jako plik
+                                            CSV</CSVLink>
+                                        <CSVLink data={csvNameValueData} filename={"textData.csv"}
+                                                 className="dropdown-item text-dark">Pobierz dane tekstowe jako plik
+                                            CSV</CSVLink>
+                                        <div className="dropdown-divider"></div>
+                                        <CSVReader
+                                            cssClass="csv-reader-input dropdown-item text-dark"
+                                            label="Dodaj dane liczbowe z pliku CSV"
+                                            onFileLoaded={this.csvXYFileAdded}
+                                            onError={this.handleDarkSideForce}
+                                            inputId="csvNewData"
+                                            inputStyle={{color: 'black'}}
+                                        />
+                                        <CSVReader
+                                            cssClass="csv-reader-input dropdown-item text-dark"
+                                            label="Dodaj dane tekstowe z pliku CSV"
+                                            onFileLoaded={this.csvNameValueFileAdded}
+                                            onError={this.handleDarkSideForce}
+                                            inputId="csvNewData"
+                                            inputStyle={{color: 'black'}}
+                                        />
                                     </div>
                                 </li>
 
@@ -111,6 +189,12 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, {
+    addXYPoint,
+    addNameValuePoint,
     removeAllXYPoints,
-    removeAllNameAndValuePoints
+    removeAllNameAndValuePoints,
+    setXLabel,
+    setYLabel,
+    setNameLabel,
+    setValueLabel
 })(Header);

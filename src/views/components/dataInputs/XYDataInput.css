@@ -20,3 +20,9 @@
 .buttonsWidth {
     width: 180px;
 }
+
+.inputField {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+}

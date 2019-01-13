@@ -35,10 +35,10 @@ export default function HorizontalBarChart(props) {
                 margin={{top: 5, right: 30, left: 20, bottom: 5}}
                 barSize={20}>
                 <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis dataKey="name"/>
-                <YAxis/>
+                <XAxis dataKey="name" label={{value: props.nameLabel, position: 'insideBottom', offset: 0}}/>
+                <YAxis label={{ value: props.valueLabel, angle: -90, position: 'insideLeft' }}/>
                 <Tooltip/>
-                <Legend/>
+                <Legend align="right" verticalAlign="middle"/>
                 <ReferenceLine y={0} stroke='#000'/>
                 <Bar dataKey="value" name="Dane" fill={props.color}/>
             </BarChart>

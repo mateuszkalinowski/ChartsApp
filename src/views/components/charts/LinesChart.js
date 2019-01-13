@@ -31,10 +31,10 @@ export default function LinesChart(props) {
         margin={{ top: 20, right: 20, left: 10, bottom: 10 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="x" type="number" />
-        <YAxis />
+        <XAxis dataKey="x" type="number" label={{value: props.xLabel, position: 'insideBottom', offset: 0}}/>
+        <YAxis label={{ value: props.yLabel, angle: -90, position: 'insideLeft' }}/>
         <Tooltip />
-        <Legend />
+          <Legend align="right" verticalAlign="middle"/>
         <Line type="monotone" dataKey="y" stroke={props.color} />
       </LineChart>
     </React.Fragment>

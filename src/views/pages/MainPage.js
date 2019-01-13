@@ -40,7 +40,9 @@ class MainPage extends Component {
                 b: '244',
                 a: '1',
             },
-            hexColor: '#4286f4'
+            hexColor: '#4286f4',
+            labelXYX: "X",
+            labelXYY: "Y"
         };
     }
 
@@ -105,15 +107,17 @@ class MainPage extends Component {
                         </h4>
                         {this.props.selections.family === "Liczbowe" &&
                         <React.Fragment>
-                            {
-                                this.state.NumbersChartType === "Punktowy" && (
-                                    <PointsChart points={this.props.xypoints} color={this.state.hexColor}/>
+                            <div className="chartArea">
+                                {
+                                    this.state.NumbersChartType === "Punktowy" && (
+                                        <PointsChart points={this.props.xypoints} color={this.state.hexColor} xLabel={this.props.selections.xLabel} yLabel={this.props.selections.yLabel}/>
+                                    )
+                                }
+                                {this.state.NumbersChartType === "Liniowy" && (
+                                    <LinesChart points={this.props.xypoints} color={this.state.hexColor} xLabel={this.props.selections.xLabel} yLabel={this.props.selections.yLabel}/>
                                 )
-                            }
-                            {this.state.NumbersChartType === "Liniowy" && (
-                                <LinesChart points={this.props.xypoints} color={this.state.hexColor}/>
-                            )
-                            }
+                                }
+                            </div>
                             <button
                                 className="btn btn-dark mx-4"
                                 onClick={() => {
@@ -139,14 +143,15 @@ class MainPage extends Component {
 
                         {this.props.selections.family === "Tekstowe" &&
                         <React.Fragment>
+                            <div className="chartArea">
                             {
                                 this.state.TextChartType === "KolumnowyHoryzontalny" && (
-                                    <HorizontalBarChart points={this.props.nvpoints} color={this.state.hexColor}/>
+                                    <HorizontalBarChart points={this.props.nvpoints} color={this.state.hexColor} nameLabel={this.props.selections.nameLabel} valueLabel={this.props.selections.valueLabel}/>
                                 )
                             }
                             {
                                 this.state.TextChartType === "KolumnowyWertykalny" && (
-                                    <VerticalBarChart points={this.props.nvpoints} color={this.state.hexColor}/>
+                                    <VerticalBarChart points={this.props.nvpoints} color={this.state.hexColor} nameLabel={this.props.selections.nameLabel} valueLabel={this.props.selections.valueLabel}/>
                                 )
                             }
                             {
@@ -154,6 +159,7 @@ class MainPage extends Component {
                                     <CircleChart points={this.props.nvpoints} color={this.state.hexColor}/>
                                 )
                             }
+                            </div>
                             <button
                                 className="btn btn-dark mx-4"
                                 onClick={() => {
@@ -188,9 +194,9 @@ class MainPage extends Component {
                         }
                         <div className="row">
                             <div className="col-sm-12">
-                                    <CirclePicker className="colorPicker"
-                                                  color={this.state.color}
-                                                  onChange={this.handleChange}/>
+                                <CirclePicker className="colorPicker"
+                                              color={this.state.color}
+                                              onChange={this.handleChange}/>
 
                             </div>
                         </div>

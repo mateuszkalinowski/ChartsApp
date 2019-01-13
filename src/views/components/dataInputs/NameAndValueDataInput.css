@@ -17,9 +17,15 @@
 }
 
 .valueWidth {
-    width: 90px;
+    width: 90px !important;
 }
 
 .buttonsWidth {
     width: 180px;
+}
+
+.inputField {
+    width: 60px;
+    height: 30px;
+    text-align: center;
 }

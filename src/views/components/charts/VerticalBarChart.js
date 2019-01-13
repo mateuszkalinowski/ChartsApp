@@ -36,10 +36,10 @@ export default function VerticalBarChart(props) {
                 layout="vertical"
                 barSize={20}>
                 <CartesianGrid strokeDasharray="3 3"/>
-                <XAxis type="number"/>
-                <YAxis dataKey="name" type="category"/>
+                <XAxis type="number" label={{ value: props.valueLabel, position: 'insideBottom', offset: 0}}/>
+                <YAxis dataKey="name" type="category" label={{value: props.nameLabel, angle: -90, position: 'insideLeft'}}/>
                 <Tooltip/>
-                <Legend/>
+                <Legend align="right" verticalAlign="middle"/>
                 <ReferenceLine y={0} stroke='#000'/>
                 <Bar dataKey="value" name="Dane" fill={props.color}/>
             </BarChart>

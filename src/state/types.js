@@ -13,3 +13,8 @@ export const REMOVE_PAIR = 'REMOVE_PAIR';
 export const EDIT_PAIR = 'EDIT_PAIR';
 
 export const SET_SELECTED_CHARTS_FAMILY = 'SET_SELECTED_CHARTS_FAMILY';
+
+export const SET_X_LABEL = 'SET_X_LABEL';
+export const SET_Y_LABEL = 'SET_Y_LABEL';
+export const SET_NAME_LABEL = 'SET_NAME_LABEL';
+export const SET_VALUE_LABEL = 'SET_VALUE_LABEL';
