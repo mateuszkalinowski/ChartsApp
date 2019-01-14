@@ -3,7 +3,8 @@ import {
     SET_X_LABEL,
     SET_Y_LABEL,
     SET_NAME_LABEL,
-    SET_VALUE_LABEL
+    SET_VALUE_LABEL,
+    SET_HELP_VISIBLE
 } from "../../types";
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
         xLabel: 'X',
         yLabel: 'Y',
         nameLabel: 'Nazwa',
-        valueLabel: 'Wartość'
+        valueLabel: 'Wartość',
+        helpVisible: false
     }
 };
 
@@ -58,6 +60,14 @@ export default function (state = initialState, action) {
                     valueLabel: action.payload
                 }
             };
+        case SET_HELP_VISIBLE:
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    helpVisible: action.payload
+                }
+            }
         default:
             return state;
     }

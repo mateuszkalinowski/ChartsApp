@@ -298,6 +298,13 @@ class XYDataInput extends Component {
                             </button>
                         </td>
                     </tr>
+                    {this.props.selections.helpVisible &&
+                    <tr>
+                        <td colSpan="3">
+                            <span className="text-muted">Przy tej wybranej rodzinie wykresów obie wprowadzane wartości muszą być wartościami numerycznymi</span>
+                        </td>
+                    </tr>
+                    }
                     </tbody>
                 </table>
                 <h6 className="text-danger"> {this.state.errorMessage} </h6>

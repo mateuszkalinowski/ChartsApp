@@ -17,7 +17,8 @@ import {
     setXLabel,
     setYLabel,
     setNameLabel,
-    setValueLabel
+    setValueLabel,
+    setHelpVisible
 } from "../../state/actions/selections/selectionsActions";
 import uuid from "uuid";
 
@@ -159,17 +160,30 @@ class Header extends Component {
                                         >Usuń wszystkie dane tekstowe</a>
                                     </div>
                                 </li>
-
-                                {/*<li class="nav-item active">*/}
-                                {/*<a class="nav-link" href="#">*/}
-                                {/*Wykresy danych liczbowych*/}
-                                {/*</a>*/}
-                                {/*</li>*/}
-                                {/*<li class="nav-item active">*/}
-                                {/*<a class="nav-link" href="#">*/}
-                                {/*Wykresy danych tekstowych*/}
-                                {/*</a>*/}
-                                {/*</li> */}
+                                {this.props.selections.helpVisible === false &&
+                                <li className="nav-item active">
+                                <a className="nav-link" href="#"
+                                onClick={() => {
+                                this.props.setHelpVisible(true);
+                                }
+                                }
+                                >
+                                    Pokaż pomoc
+                                </a>
+                                </li>
+                                }
+                                {this.props.selections.helpVisible === true &&
+                                <li className="nav-item active">
+                                    <a className="nav-link" href="#"
+                                    onClick={() => {
+                                    this.props.setHelpVisible(false);
+                                    }
+                                    }
+                                    >
+                                        Ukryj pomoc
+                                    </a>
+                                </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -196,5 +210,6 @@ export default connect(mapStateToProps, {
     setXLabel,
     setYLabel,
     setNameLabel,
-    setValueLabel
+    setValueLabel,
+    setHelpVisible
 })(Header);

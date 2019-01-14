@@ -18,3 +18,5 @@ export const SET_X_LABEL = 'SET_X_LABEL';
 export const SET_Y_LABEL = 'SET_Y_LABEL';
 export const SET_NAME_LABEL = 'SET_NAME_LABEL';
 export const SET_VALUE_LABEL = 'SET_VALUE_LABEL';
+
+export const SET_HELP_VISIBLE = "SET_HELP_VISIBLE";

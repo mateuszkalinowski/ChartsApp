@@ -89,6 +89,18 @@ class MainPage extends Component {
                         </button>
                     </div>
                 </div>
+                {this.props.selections.helpVisible &&
+                <div className="row mt-2">
+                    <div className="col-sm-6 center">
+                        <span className="text-muted">Wykresy liczbowe to wykres punktowy i liniowy.</span>
+                    </div>
+                    <div className="col-sm-6 center">
+                         <span className="text-muted">Wykresy tekstowe to wykresy kolumnowe (horyzontalne i wertykalne
+                        oraz wykres kołowy</span>
+                    </div>
+                </div>
+                }
+
                 <div className="row">
                     {this.props.selections.family === "Liczbowe" &&
                     <div className="col-sm-4">
@@ -200,6 +212,13 @@ class MainPage extends Component {
 
                             </div>
                         </div>
+                        {this.props.selections.helpVisible &&
+                        <div className="row mt-2">
+                            <div className="col-sm-12 mx-auto">
+                                <span className="text-muted">Wybrany tutaj kolor będzie ustawiony dla wszystkich typów wykresów</span>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>
